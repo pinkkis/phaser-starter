@@ -20,8 +20,13 @@ module.exports = {
 	module: {
 		rules: [{
 			test: /\.tsx?$/,
-			use: 'ts-loader',
+			use: 'babel-loader',
 			exclude: /node_modules/
+		},
+		{
+			test: /\.map.js$/,
+			use: ["source-map-loader"],
+			enforce: "pre"
 		},
 		{
 			test: [/\.vert$/, /\.frag$/],
@@ -37,7 +42,7 @@ module.exports = {
 			}]
 		},
 		{
-			test: /pathfinder.js$/,
+			test: /.worker.js$/,
 			use: [{
 				loader: 'worker-loader'
 			}]
