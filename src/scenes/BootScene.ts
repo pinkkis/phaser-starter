@@ -1,27 +1,25 @@
-import { BaseScene } from "./BaseScene";
+import { BaseScene } from './BaseScene';
 
 export class BootScene extends BaseScene{
 	constructor(key: string, options: any) {
 		super('BootScene');
 	}
 
-	preload() {
-
+	public preload(): void {
+		// empty
 	}
 
-	init() {
-
+	public init(): void {
+		// empty
 	}
 
-	create() {
+	public create(): void {
 		console.info('BootScene - create()');
-
-		// this.scene.start('LoadScene', {});
-
 		this.add.text(100, 100, 'Boot Scene Loaded', { fontSize: '20px' });
+		// this.scene.start('LoadScene', {});
 	}
 
-	update(time: number, delta: number) {
-
+	public update(time: number, delta: number): void {
+		// empty
 	}
 }
