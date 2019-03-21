@@ -3,8 +3,11 @@ const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CleanPlugin = require('clean-webpack-plugin');
 
-const devMode = process.env.NODE_ENV !== 'production';
+const version = require('./package.json').version;
 
 // Phaser webpack config
 const phaserModule = path.join(__dirname, '/node_modules/phaser/');
@@ -41,10 +44,8 @@ module.exports = {
 		},
 		{
 			test: /\.css$/,
-			use: [{
-				loader: MiniCssExtractPlugin.loader,
-				options: {}
-			},
+			use: [
+				MiniCssExtractPlugin.loader,
 				"css-loader"
 			]
 		},
@@ -62,6 +63,7 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new CleanPlugin(),
 		new webpack.DefinePlugin({
 			'CANVAS_RENDERER': JSON.stringify(true),
 			'WEBGL_RENDERER': JSON.stringify(true)
@@ -71,6 +73,7 @@ module.exports = {
 			filename: './index.html',
 			chunks: ['game', 'vendor'],
 			buildType: process.env.NODE_ENV,
+			version: version,
 			favicon: './src/favicon.ico',
 		}),
 		// new CopyWebpackPlugin([
@@ -81,7 +84,7 @@ module.exports = {
 		// ], {}),
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
-			chunkFilename: '[id].css',
+			chunkFilename: '[name].css',
 		})
 	],
 	resolve: {
@@ -91,6 +94,10 @@ module.exports = {
 		}
 	},
 	optimization: {
+		minimizer: [
+			new TerserPlugin(),
+			new OptimizeCSSAssetsPlugin()
+		],
 		splitChunks: {
 			cacheGroups: {
 				commons: {
