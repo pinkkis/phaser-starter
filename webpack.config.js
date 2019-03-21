@@ -12,7 +12,8 @@ const phaser = path.join(phaserModule, 'dist/phaser.min.js');
 
 module.exports = {
 	output: {
-		globalObject: 'this'
+		globalObject: 'this',
+		// path: path.resolve(__dirname, './docs') // for github hosting
 	},
 	entry: {
 		game: ['./src/game.ts']
@@ -31,15 +32,6 @@ module.exports = {
 		{
 			test: [/\.vert$/, /\.frag$/],
 			use: 'raw-loader'
-		},
-		{
-			test: /\.html$/,
-			use: [{
-				loader: 'html-loader',
-				options: {
-					minimize: true
-				}
-			}]
 		},
 		{
 			test: /.worker.js$/,
@@ -77,29 +69,19 @@ module.exports = {
 		new HtmlWebPackPlugin({
 			template: './src/index.html',
 			filename: './index.html',
-			chunks: ['game', 'vendor']
+			chunks: ['game', 'vendor'],
+			buildType: process.env.NODE_ENV,
+			favicon: './src/favicon.ico',
 		}),
 		// new CopyWebpackPlugin([
 		// 	{
-		// 		from: './assets/atlas/',
-		// 		to: './assets/atlas/'
+		// 		from: './assets/',
+		// 		to: './assets/'
 		// 	},
-		// 	{
-		// 		from: './assets/tilemaps/',
-		// 		to: './assets/tilemaps/'
-		// 	},
-		// 	{
-		// 		from: './assets/tilesets/',
-		// 		to: './assets/tilesets/'
-		// 	},
-		// 	{
-		// 		from: './assets/json/',
-		// 		to: './assets/json/'
-		// 	}
 		// ], {}),
 		new MiniCssExtractPlugin({
-			filename: devMode ? '[name].css' : '[name].[hash].css',
-			chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+			filename: '[name].css',
+			chunkFilename: '[id].css',
 		})
 	],
 	resolve: {

@@ -7,11 +7,14 @@
 			content="width=device-width, initial-scale=1.0, maximum-scale=2.0"
 		/>
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link rel="shortcut icon" href="/favicon.ico" />
 		<title>Game Template</title>
 
 		<!-- <script async src="https://www.googletagmanager.com/gtag/js?id="></script> -->
 		<script>
+			window.env = {
+				buildType: '<%= htmlWebpackPlugin.options.buildType %>'
+			};
+
 			// window.dataLayer = window.dataLayer || [];
 			// function gtag() {
 			// 	dataLayer.push(arguments);
