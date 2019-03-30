@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 
-const version = require('./package.json').version;
+const {version, distOutput} = require('./buildConfig');
 
 // Phaser webpack config
 const phaserModule = path.join(__dirname, '/node_modules/phaser/');
@@ -16,7 +16,7 @@ const phaser = path.join(phaserModule, 'dist/phaser.min.js');
 module.exports = {
 	output: {
 		globalObject: 'this',
-		// path: path.resolve(__dirname, './docs') // for github hosting
+		path: distOutput,
 	},
 	entry: {
 		game: ['./src/game.ts']
@@ -76,12 +76,12 @@ module.exports = {
 			version: version,
 			favicon: './src/favicon.ico',
 		}),
-		// new CopyWebpackPlugin([
-		// 	{
-		// 		from: './assets/',
-		// 		to: './assets/'
-		// 	},
-		// ], {}),
+		new CopyWebpackPlugin([
+			{
+				from: './assets/',
+				to: './assets/'
+			},
+		], {}),
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[name].css',
