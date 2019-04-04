@@ -1,7 +1,7 @@
-import { KokoGame } from '../game';
+import { PoisonVialGame } from '../game';
 
 export class BaseScene extends Phaser.Scene {
-	public game: KokoGame;
+	public game: PoisonVialGame;
 
 	constructor(key: string, options?: any) {
 		super(key);

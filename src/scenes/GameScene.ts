@@ -1,8 +1,8 @@
 import { BaseScene } from './BaseScene';
 
-export class BootScene extends BaseScene {
+export class GameScene extends BaseScene {
 	constructor(key: string, options: any) {
-		super('BootScene');
+		super('GameScene');
 	}
 
 	public preload(): void {
@@ -14,8 +14,8 @@ export class BootScene extends BaseScene {
 	}
 
 	public create(): void {
-		console.info('BootScene - create()');
-		this.scene.start('LoadScene', {});
+		console.info('GameScene - create()');
+		this.add.text(100, 100, 'Game Scene Loaded', { fontSize: '20px' });
 	}
 
 	public update(time: number, delta: number): void {

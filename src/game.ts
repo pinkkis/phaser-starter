@@ -3,9 +3,11 @@ import '@csstools/normalize.css';
 import './css/styles.css';
 import { BootScene } from './scenes/BootScene';
 import { gameConfig } from './config/GameConfig';
+import { LoadScene } from './scenes/LoadScene';
+import { GameScene } from './scenes/GameScene';
 
 // set up game class, and global stuff
-export class KokoGame extends Phaser.Game {
+export class PoisonVialGame extends Phaser.Game {
 	private debug: boolean = false;
 
 	constructor(config: GameConfig) {
@@ -15,7 +17,7 @@ export class KokoGame extends Phaser.Game {
 
 // start the game
 window.onload = () => {
-	const game = new KokoGame(gameConfig);
+	const game = new PoisonVialGame(gameConfig);
 
 	// set up stats
 	if (window.env.buildType !== 'production') {
@@ -32,4 +34,6 @@ window.onload = () => {
 	}
 
 	game.scene.add('BootScene', BootScene, true);
+	game.scene.add('LoadScene', LoadScene, false);
+	game.scene.add('GameScene', GameScene, false);
 };
