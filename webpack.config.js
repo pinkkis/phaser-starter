@@ -21,6 +21,7 @@ module.exports = {
 	entry: {
 		game: ['./src/game.ts']
 	},
+	devtool: 'eval-source-map',
 	module: {
 		rules: [{
 			test: /\.tsx?$/,
