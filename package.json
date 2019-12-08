@@ -6,7 +6,7 @@
   "scripts": {
     "test": "ava",
     "test:watch": "ava -w",
-    "itchio": "node ./tasks/createZip.js",
+    "itchio": "node -r esm ./tasks/createZip.js",
     "extrude": "tile-extruder -w 32 -h 32",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --progress --port=8000 --open"
@@ -16,7 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/pinkkis/phaser-starter.git"
   },
-  "keywords": [],
+  "keywords": [
+    "phaser game",
+    "starter project"
+  ],
   "author": "Kristian Koivisto-Kokko <pinkkis@gmail.com> (http://pinkkis.com/)",
   "license": "MIT",
   "licenses": [
@@ -45,6 +48,7 @@
     "cross-env": "^5.2.1",
     "css-loader": "^2.1.1",
     "easystarjs": "^0.4.3",
+    "esm": "^3.2.25",
     "expose-loader": "^0.7.5",
     "file-loader": "^3.0.1",
     "html-loader": "^0.5.5",
