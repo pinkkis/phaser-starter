@@ -8,3 +8,29 @@
 Starter template for [Phaser 3](https://phaser.io/), using [Typescript](https://www.typescriptlang.org/), [Babel](https://babeljs.io/) and [Webpack](https://webpack.js.org/).
 
 Provides support for webworker loading in webpack and [AVA](https://github.com/avajs/ava) unit tests. Create zip files for Itch.io releases.
+
+## Requirements
+* [Node.js](https://nodejs.org/en/download/) - version 12.x or newer
+* [Typescript](https://www.typescriptlang.org/) 3.7
+
+## How to use
+```bash
+# Clone this repository
+$ git clone --depth 1 https://github.com/pinkkis/phaser-starter.git phaser-starter
+
+# Go into the repository
+$ cd phaser-starter
+
+# Install dependencies
+$ npm install
+
+# Start the local development server (on port 8000)
+$ npm start
+
+# Build a production version into /dist
+$ npm run build
+
+# Bundle an Itch.io release zip
+# Creates a release-version.zip in /build
+$ npm run itchio
+```
