@@ -7,4 +7,4 @@
 
 Starter template for [Phaser 3](https://phaser.io/), using [Typescript](https://www.typescriptlang.org/), [Babel](https://babeljs.io/) and [Webpack](https://webpack.js.org/).
 
-Provides support for webworker loading in webpack and [AVA](https://github.com/avajs/ava) unit tests.
+Provides support for webworker loading in webpack and [AVA](https://github.com/avajs/ava) unit tests. Create zip files for Itch.io releases.
