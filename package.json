@@ -1,6 +1,6 @@
 {
   "name": "phaser-starter",
-  "version": "1.0.0",
+  "version": "3.20.0",
   "description": "phaser-starter",
   "main": "index.js",
   "scripts": {
