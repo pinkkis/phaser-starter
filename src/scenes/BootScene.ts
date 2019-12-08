@@ -1,8 +1,8 @@
 import { BaseScene } from './BaseScene';
 
 export class BootScene extends BaseScene {
-	constructor(key: string, options: any) {
-		super('BootScene');
+	constructor(options: Partial<Phaser.Types.Scenes.SettingsConfig>) {
+		super(options);
 	}
 
 	public preload(): void {

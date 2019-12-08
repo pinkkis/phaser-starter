@@ -10,7 +10,7 @@ import { GameScene } from './scenes/GameScene';
 export class PoisonVialGame extends Phaser.Game {
 	private debug: boolean = false;
 
-	constructor(config: GameConfig) {
+	constructor(config: Phaser.Types.Core.GameConfig) {
 		super(config);
 	}
 }

@@ -10,6 +10,7 @@
 		"no-console": false,
 		"max-line-length": false,
 		"ordered-imports": false,
+		"interface-name": false,
 		"indent": [
 			true,
 			"tabs",

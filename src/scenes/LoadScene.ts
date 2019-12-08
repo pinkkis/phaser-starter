@@ -1,10 +1,8 @@
 import { BaseScene } from './BaseScene';
 
 export class LoadScene extends BaseScene {
-	private rt: Phaser.GameObjects.RenderTexture;
-
-	constructor(key: string, options: any) {
-		super('LoadScene');
+	constructor(options: Partial<Phaser.Types.Scenes.SettingsConfig>) {
+		super(options);
 	}
 
 	public preload(): void {

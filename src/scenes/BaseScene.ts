@@ -3,8 +3,8 @@ import { PoisonVialGame } from '../game';
 export class BaseScene extends Phaser.Scene {
 	public game: PoisonVialGame;
 
-	constructor(key: string, options?: any) {
-		super(key);
+	constructor(options: Partial<Phaser.Types.Scenes.SettingsConfig>) {
+		super(options);
 	}
 
 	public preload(): void {
