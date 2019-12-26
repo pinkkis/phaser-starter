@@ -9,7 +9,7 @@
     "itchio": "node -r esm ./tasks/createZip.js",
     "extrude": "tile-extruder -w 32 -h 32",
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --progress --port=8000 --open"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --progress --port=8443 --open --https --disable-host-check --host 0.0.0.0"
   },
   "browserslist": "> 1%, not dead",
   "repository": {
@@ -63,6 +63,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "raw-loader": "^2.0.0",
     "source-map-loader": "^0.2.4",
+    "workbox-webpack-plugin": "^4.3.1",
     "terser-webpack-plugin": "^1.4.2",
     "ts-loader": "^5.4.5",
     "ts-node": "^8.5.4",
