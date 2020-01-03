@@ -6,8 +6,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
-const {version, distOutput} = require('./buildConfig');
+const { version, distOutput } = require('./buildConfig');
 
 // Phaser webpack config
 const phaserModule = path.join(__dirname, '/node_modules/phaser/');
@@ -65,6 +66,9 @@ module.exports = {
 	},
 	plugins: [
 		new CleanPlugin(),
+		new WorkboxPlugin.InjectManifest({
+			swSrc: './src/sw.js',
+		}),
 		new webpack.DefinePlugin({
 			'CANVAS_RENDERER': JSON.stringify(true),
 			'WEBGL_RENDERER': JSON.stringify(true)
@@ -80,7 +84,11 @@ module.exports = {
 		new CopyWebpackPlugin([
 			{
 				from: './assets/',
-				to: './assets/'
+				to: './assets/',
+			},
+			{
+				from: './src/pwa',
+				to: '',
 			},
 		], {}),
 		new MiniCssExtractPlugin({
