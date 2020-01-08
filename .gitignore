@@ -33,3 +33,6 @@ node_modules
 # build/dist folders
 dist/
 build/
+
+# ssl certs
+ssl/*.pem

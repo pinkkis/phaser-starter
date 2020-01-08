@@ -66,9 +66,6 @@ module.exports = {
 	},
 	plugins: [
 		new CleanPlugin(),
-		new WorkboxPlugin.InjectManifest({
-			swSrc: './src/sw.js',
-		}),
 		new webpack.DefinePlugin({
 			'CANVAS_RENDERER': JSON.stringify(true),
 			'WEBGL_RENDERER': JSON.stringify(true)
@@ -94,7 +91,10 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[name].css',
-		})
+		}),
+		new WorkboxPlugin.InjectManifest({
+			swSrc: path.join('src', 'pwa', 'sw.js'),
+		}),
 	],
 	resolve: {
 		extensions: ['.ts', '.js'],

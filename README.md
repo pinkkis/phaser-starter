@@ -24,8 +24,13 @@ $ cd phaser-starter
 # Install dependencies
 $ npm install
 
-# Start the local development server (on port 8000)
+# Start the local development server (on port 8080)
 $ npm start
+
+# Local dev server with ssl (for service worker)
+$ npm start:https
+
+Make sure you have local certificates that are trusted. Use [mkcert](https://github.com/FiloSottile/mkcert) for example. Put certificate files in `./ssl/` and make sure filenames in package.json script match
 
 # Build a production version into /dist
 $ npm run build
