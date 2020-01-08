@@ -13,6 +13,9 @@ Provides support for webworker loading in webpack and [AVA](https://github.com/a
 * [Node.js](https://nodejs.org/en/download/) - version 12.x or newer
 * [Typescript](https://www.typescriptlang.org/) 3.7
 
+### SSL
+Make sure you have local certificates that are trusted. Use [mkcert](https://github.com/FiloSottile/mkcert) for example. Put certificate files in `./ssl/` and make sure filenames in package.json script match
+
 ## How to use
 ```bash
 # Clone this repository
@@ -29,8 +32,6 @@ $ npm start
 
 # Local dev server with ssl (for service worker)
 $ npm start:https
-
-Make sure you have local certificates that are trusted. Use [mkcert](https://github.com/FiloSottile/mkcert) for example. Put certificate files in `./ssl/` and make sure filenames in package.json script match
 
 # Build a production version into /dist
 $ npm run build
