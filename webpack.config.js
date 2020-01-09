@@ -12,7 +12,8 @@ const { version, distOutput } = require('./buildConfig');
 
 // Phaser webpack config
 const phaserModule = path.join(__dirname, '/node_modules/phaser/');
-const phaser = path.join(phaserModule, process.env.NODE_ENV === 'production' ? 'dist/phaser.min.js' : 'dist/phaser.js');
+const phaser = path.join(phaserModule, 'dist', process.env.NODE_ENV === 'production' ? 'phaser.min.js' : 'phaser.js');
+const spinePlugin = path.join(phaserModule, 'plugins', 'spine', 'dist', process.env.NODE_ENV === 'production' ? 'SpineWebGLPlugin.min.js' : 'SpineWebGLPlugin.js');
 
 module.exports = {
 	output: {
@@ -99,7 +100,8 @@ module.exports = {
 	resolve: {
 		extensions: ['.ts', '.js'],
 		alias: {
-			'phaser': phaser
+			'phaser': phaser,
+			'SpineWebGLPlugin': spinePlugin,
 		}
 	},
 	optimization: {

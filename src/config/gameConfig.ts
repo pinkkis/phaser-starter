@@ -19,6 +19,8 @@ export const gameConfig: Phaser.Types.Core.GameConfig = {
 		},
 	},
 	plugins: {
-		global: [] as any[],
+		global: [],
+		//@ts-ignore
+		scene: [{ key: 'SpinePlugin', plugin: window.SpinePlugin, start: true, mapping: 'spine' }],
 	},
 };
