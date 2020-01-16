@@ -9,7 +9,7 @@
     "itchio": "node -r esm ./tasks/createZip.js",
     "extrude": "tile-extruder -w 32 -h 32",
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --progress --open",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --progress --open --port 3000",
     "start:https": "cross-env NODE_ENV=development webpack-dev-server --mode development --progress --open --https --disable-host-check --cert ./ssl/localhost.pem --key ./ssl/localhost_key.pem"
   },
   "browserslist": "> 1%, not dead",

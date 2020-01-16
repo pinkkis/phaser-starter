@@ -1,5 +1,5 @@
 import 'phaser';
-import 'SpineWebGLPlugin';
+import 'SpinePlugin';
 import '@csstools/normalize.css';
 import './css/styles.css';
 import { BootScene } from './scenes/BootScene';

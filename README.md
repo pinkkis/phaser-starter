@@ -7,7 +7,11 @@
 
 Starter template for [Phaser 3](https://phaser.io/), using [Typescript](https://www.typescriptlang.org/), [Babel](https://babeljs.io/) and [Webpack](https://webpack.js.org/).
 
-Provides support for webworker loading in webpack and [AVA](https://github.com/avajs/ava) unit tests. Create zip files for Itch.io releases.
+Provides support for:
+- webworker loading in webpack
+- [AVA](https://github.com/avajs/ava) unit tests
+- Creating a zip files for Itch.io releases
+- Spine plugin for Phaser
 
 ## Requirements
 * [Node.js](https://nodejs.org/en/download/) - version 12.x or newer
@@ -40,3 +44,8 @@ $ npm run build
 # Creates a release-version.zip in /build
 $ npm run itchio
 ```
+
+## 3rd party licenses
+This template uses the Phaser 3 Spine plugin. The Spine Runtimes require you to have your own license if you wish to use them in your own project outside of evaluation
+
+See [the 3rd party license file](3RD-PARTY-LICENSES.md) for a list of other software used.

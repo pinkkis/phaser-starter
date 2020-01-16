@@ -6,7 +6,9 @@
 		"target": "esnext",
 		"allowJs": true,
 		"sourceMap": true,
-		"moduleResolution": "node"
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true
 	},
 	"exclude": [
 		"node_modules",
