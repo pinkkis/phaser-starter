@@ -26,7 +26,7 @@ module.exports = {
 	devtool: process.env.NODE_ENV === 'production' ? undefined : 'eval-source-map',
 	module: {
 		rules: [{
-			test: /\.tsx?$/,
+			test: /\.[t|j]sx?$/,
 			use: 'babel-loader',
 			exclude: /node_modules/
 		},
@@ -98,7 +98,7 @@ module.exports = {
 		}),
 	],
 	resolve: {
-		extensions: ['.ts', '.js'],
+		extensions: ['.ts', '.js', '.jsx', '.tsx'],
 		alias: {
 			'phaser': phaser,
 			'SpinePlugin': spinePlugin
