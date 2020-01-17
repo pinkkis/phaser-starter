@@ -1,0 +1,64 @@
+name: Node CI/CD
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    env:
+      CI: true
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check publish secret exists
+      run: |
+        if [ -z "${{secrets.PERSONAL_TOKEN}}" ]
+        then
+          echo "PERSONAL_TOKEN secret not present"
+          exit 1
+        fi
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+
+    - name: Cache NPM dependencies
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.OS }}-build-${{ env.cache-name }}-
+          ${{ runner.OS }}-build-
+          ${{ runner.OS }}-
+    - name: Install NPM dependencies
+      run: npm ci
+
+    - name: NPM Build
+      run: npm run build --if-present
+
+    - name: NPM Test
+      run: npm test --if-present
+      if: success()
+
+    - name: Git GH-Pages Deploy
+      if: github.event_name == 'push' && success()
+      run: |
+        cd $PUBLISH_DIR
+        touch .nojekyll
+        git init
+        git config user.name github_action
+        git config user.email github_action@github.com
+        git config commit.gpgsign false
+        git add .
+        git commit -m "Automated GH-Pages Deploy by $GITHUB_ACTOR"
+        git push --force --quiet https://${{secrets.PERSONAL_TOKEN}}@github.com/$GITHUB_REPOSITORY.git ${GITHUB_REF##*/}:$TARGET_BRANCH
+      env:
+        TARGET_BRANCH: gh-pages
+        PUBLISH_DIR: dist
