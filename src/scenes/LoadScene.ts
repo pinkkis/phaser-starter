@@ -8,13 +8,9 @@ export class LoadScene extends BaseScene {
 	public preload(): void {
 		const progress = this.add.graphics();
 
-		this.load.setPath('assets/spine-boy');
+		this.load.setPath('assets/stick-boy');
+		this.load.spine('stick-boy', 'stick-boy.json', ['stick-boy.atlas'], true);
 
-		this.load.image('boy', 'boy.png');
-		// @ts-ignore
-		this.load.spine('spineboy', 'boy.json', ['boy.atlas'], true);
-		
-		this.load.image('goal', 'goal.png');
 		// --
 
 		this.load.on('progress', (value: number) => {
