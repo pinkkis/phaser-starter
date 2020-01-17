@@ -38,7 +38,7 @@ jobs:
           ${{ runner.OS }}-build-
           ${{ runner.OS }}-
     - name: Install NPM dependencies
-      run: npm i
+      run: npm ci
 
     - name: NPM Build
       run: npm run build --if-present
