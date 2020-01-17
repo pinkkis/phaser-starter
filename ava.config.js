@@ -1,6 +1,7 @@
 export default {
 	files: [
-		'src/**/*spec.ts',
+		'src/**/*\.spec.ts',
+		'src/**/*\.test.ts',
 	],
 	sources: [
 		'src/**/*.ts',
@@ -9,6 +10,7 @@ export default {
 	verbose: true,
 	extensions: ["ts"],
 	require: [
+		"esm",
 		"ts-node/register/transpile-only"
 	]
 };

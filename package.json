@@ -2,7 +2,7 @@
   "name": "phaser-starter",
   "version": "3.22.0",
   "description": "phaser-starter",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "ava",
     "test:watch": "ava -w",
