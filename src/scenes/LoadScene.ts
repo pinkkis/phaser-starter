@@ -8,6 +8,11 @@ export class LoadScene extends BaseScene {
 	public preload(): void {
 		const progress = this.add.graphics();
 
+		this.load.setPath('assets/stick-boy');
+		this.load.spine('stick-boy', 'stick-boy.json', ['stick-boy.atlas'], true);
+
+		// --
+
 		this.load.on('progress', (value: number) => {
 			progress.clear();
 			progress.fillStyle(0xffffff, 1);
