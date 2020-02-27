@@ -5,8 +5,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const CleanPlugin = require('clean-webpack-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { InjectManifest, GenerateSW } = require('workbox-webpack-plugin');
 
 const { version, distOutput } = require('./buildConfig');
 
@@ -66,7 +66,7 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new CleanPlugin(),
+		new CleanWebpackPlugin(),
 		new webpack.DefinePlugin({
 			'CANVAS_RENDERER': JSON.stringify(true),
 			'WEBGL_RENDERER': JSON.stringify(true)
@@ -84,18 +84,12 @@ module.exports = {
 				from: './assets/',
 				to: './assets/',
 			},
-			{
-				from: './src/pwa',
-				to: '',
-			},
 		], {}),
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[name].css',
 		}),
-		new WorkboxPlugin.InjectManifest({
-			swSrc: path.join('src', 'pwa', 'sw.js'),
-		}),
+		new GenerateSW(),
 	],
 	resolve: {
 		extensions: ['.ts', '.js', '.jsx', '.tsx'],

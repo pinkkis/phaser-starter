@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=2.0"
-		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Game Template</title>
 		<script>
 			window.env = {
-				buildType: "<%= htmlWebpackPlugin.options.buildType %>",
-				version: "<%= htmlWebpackPlugin.options.version %>"
+				buildType: '<%= htmlWebpackPlugin.options.buildType %>',
+				version: '<%= htmlWebpackPlugin.options.version %>'
 			};
 
 			// Check that service workers are supported
-			if ("serviceWorker" in navigator) {
-				// Use the window load event to keep the page load performant
-				window.addEventListener("load", () => {
-					navigator.serviceWorker.register("sw.js");
-				});
+			if ('serviceWorker' in navigator) {
+				// only load in production
+				if (window.env.buildType === 'production') {
+					// Use the window load event to keep the page load performant
+					window.addEventListener('load', () => {
+						navigator.serviceWorker.register('service-worker.js');
+					});
+				}
 			}
 		</script>
 	</head>
@@ -27,4 +28,5 @@
 	<body>
 		<div id="game-container"></div>
 	</body>
+
 </html>
