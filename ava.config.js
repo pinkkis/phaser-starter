@@ -3,10 +3,7 @@ export default {
 		'src/**/*\.spec.ts',
 		'src/**/*\.test.ts',
 	],
-	sources: [
-		'src/**/*.ts',
-	],
-	compileEnhancements: false,
+	concurrency: 5,
 	verbose: true,
 	extensions: ["ts"],
 	require: [
