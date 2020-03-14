@@ -1,0 +1,27 @@
+
+stick-boy.png
+size: 339,120
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+stick-boy_body
+  rotate: true
+  xy: 2, 2
+  size: 116, 276
+  orig: 125, 294
+  offset: 9, 9
+  index: -1
+stick-boy_lower_arm
+  rotate: true
+  xy: 280, 54
+  size: 64, 48
+  orig: 83, 69
+  offset: 11, 10
+  index: -1
+stick-boy_upper_arm
+  rotate: true
+  xy: 280, 19
+  size: 33, 57
+  orig: 48, 71
+  offset: 8, 4
+  index: -1
