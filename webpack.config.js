@@ -68,8 +68,12 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),
 		new webpack.DefinePlugin({
-			'CANVAS_RENDERER': JSON.stringify(true),
-			'WEBGL_RENDERER': JSON.stringify(true)
+            'typeof CANVAS_RENDERER': JSON.stringify(true),
+            'typeof WEBGL_RENDERER': JSON.stringify(true),
+            'typeof EXPERIMENTAL': JSON.stringify(true),
+            'typeof PLUGIN_CAMERA3D': JSON.stringify(false),
+            'typeof PLUGIN_FBINSTANT': JSON.stringify(false),
+            'typeof FEATURE_SOUND': JSON.stringify(true)
 		}),
 		new HtmlWebPackPlugin({
 			template: './src/index.html',
@@ -79,17 +83,19 @@ module.exports = {
 			version: version,
 			favicon: './src/favicon.png',
 		}),
-		new CopyWebpackPlugin([
-			{
-				from: './assets/',
-				to: './assets/',
-			},
-		], {}),
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: './assets/',
+					to: './assets/',
+				},
+			]
+		}),
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[name].css',
 		}),
-		new GenerateSW(),
+		// new GenerateSW(),
 	],
 	resolve: {
 		extensions: ['.ts', '.js', '.jsx', '.tsx'],

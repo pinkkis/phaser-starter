@@ -1,5 +1,5 @@
 import 'phaser';
-import 'phaser/plugins/spine/dist/SpinePlugin';
+import 'SpinePlugin';
 import Stats from 'stats-js/src/Stats';
 import { gameConfig } from './config/GameConfig';
 import { BootScene } from './scenes/BootScene';

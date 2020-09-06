@@ -14,8 +14,9 @@ export class GameScene extends BaseScene {
 	public create(): void {
 		// eslint-disable-next-line no-console
 		console.info('GameScene - create()');
-		this.add.text(100, 100, 'Game Scene Loaded - foooo', { fontSize: '20px' });
+		this.add.text(100, 100, 'Game Scene Loaded', { fontSize: '20px' });
 
+		// TODO: spine broken in beta 2
 		// this.boy = this.add.spine(400, 300, 'stick-boy', 'idle', true).setScale(0.75);
 	}
 
