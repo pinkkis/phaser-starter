@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+.vscode
+ssl
+tasks
+assets
+.github
+.eslintrc.js
+*.d.ts
+
+rollup.config.*

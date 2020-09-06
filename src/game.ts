@@ -1,34 +1,24 @@
 import 'phaser';
-import 'SpinePlugin';
-import '@csstools/normalize.css';
-import './css/styles.css';
-import { BootScene } from './scenes/BootScene';
+import 'phaser/plugins/spine/dist/SpinePlugin';
+import Stats from 'stats-js/src/Stats';
 import { gameConfig } from './config/GameConfig';
+import { BootScene } from './scenes/BootScene';
 import { LoadScene } from './scenes/LoadScene';
 import { GameScene } from './scenes/GameScene';
-
-// set up game class, and global stuff
-export class PoisonVialGame extends Phaser.Game {
-	private debug: boolean = false;
-
-	constructor(config: Phaser.Types.Core.GameConfig) {
-		super(config);
-	}
-}
+import { PoisonVialGame } from './PoisonVialGame';
 
 // start the game
-window.onload = () => {
+window.addEventListener('load', () => {
 	const game = new PoisonVialGame(gameConfig);
 
 	// set up stats
 	if (window.env.buildType !== 'production') {
-		const Stats = require('stats-js');
 		const stats = new Stats();
 		stats.setMode(0); // 0: fps, 1: ms
 		stats.domElement.style.position = 'absolute';
 		stats.domElement.style.left = '0px';
 		stats.domElement.style.top = '0px';
-		document.body.appendChild(stats.domElement);
+		document.body.append(stats.domElement);
 
 		game.events.on('prestep', () => stats.begin());
 		game.events.on('postrender', () => stats.end());
@@ -37,4 +27,4 @@ window.onload = () => {
 	game.scene.add('BootScene', BootScene, true);
 	game.scene.add('LoadScene', LoadScene, false);
 	game.scene.add('GameScene', GameScene, false);
-};
+});

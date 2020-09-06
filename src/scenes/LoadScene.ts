@@ -1,10 +1,6 @@
 import { BaseScene } from './BaseScene';
 
 export class LoadScene extends BaseScene {
-	constructor(options: Partial<Phaser.Types.Scenes.SettingsConfig>) {
-		super(options);
-	}
-
 	public preload(): void {
 		const progress = this.add.graphics();
 
@@ -16,12 +12,7 @@ export class LoadScene extends BaseScene {
 		this.load.on('progress', (value: number) => {
 			progress.clear();
 			progress.fillStyle(0xffffff, 1);
-			progress.fillRect(
-				0,
-				this.scale.gameSize.height / 2,
-				this.scale.gameSize.width * value,
-				60,
-			);
+			progress.fillRect(0, this.scale.gameSize.height / 2, this.scale.gameSize.width * value, 60);
 		});
 
 		this.load.on('complete', () => {
@@ -32,5 +23,4 @@ export class LoadScene extends BaseScene {
 	public create(): void {
 		this.scene.start('GameScene', {});
 	}
-
 }

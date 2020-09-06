@@ -1,5 +1,2 @@
-export interface IGameSettings {
-	[key: string]: any;
-}
-
+export type IGameSettings = Record<string, unknown>;
 export const gameSettings: IGameSettings = {};

@@ -1,10 +1,6 @@
 import { BaseScene } from './BaseScene';
 
 export class BootScene extends BaseScene {
-	constructor(options: Partial<Phaser.Types.Scenes.SettingsConfig>) {
-		super(options);
-	}
-
 	public preload(): void {
 		// empty
 	}
@@ -14,11 +10,13 @@ export class BootScene extends BaseScene {
 	}
 
 	public create(): void {
+		// eslint-disable-next-line no-console
 		console.info('BootScene - create()');
 		this.scene.start('LoadScene', {});
 	}
 
-	public update(time: number, delta: number): void {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public update(_time: number, _delta: number): void {
 		// empty
 	}
 }
