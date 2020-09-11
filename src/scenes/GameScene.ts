@@ -17,7 +17,7 @@ export class GameScene extends BaseScene {
 		this.add.text(100, 100, 'Game Scene Loaded', { fontSize: '20px' });
 
 		// TODO: spine broken in beta 2
-		// this.boy = this.add.spine(400, 300, 'stick-boy', 'idle', true).setScale(0.75);
+		this.boy = this.add.spine(400, 300, 'stick-boy', 'idle', true).setScale(0.75);
 	}
 
 	public update(_time: number, _delta: number): void {
